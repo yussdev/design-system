@@ -1,0 +1,8 @@
+{
+  "short_name": "Snappfood Design System",
+  "name": "Snappfood Design System",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ff00a4",
+  "background_color": "#ffffff"
+}
