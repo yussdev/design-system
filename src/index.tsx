@@ -1,1 +1,1 @@
-export const x = 45;
+export const x = '45'
