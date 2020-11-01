@@ -11,5 +11,7 @@ export const defaultTheme = {
     radius: rem(6),
   },
 }
-
 export type ThemeType = typeof defaultTheme
+export type ColorsName = keyof typeof colors
+
+export const colorsName = Object.keys(colors) as Array<ColorsName>

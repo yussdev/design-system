@@ -49,6 +49,11 @@ export const alert = {
 }
 
 export const inactive = {
+  main: '#D2D4D6',
   light: '#D2D4D6',
   dark: '#9C9FA3',
+  overlay: '#D2D4D6',
+  alphaHigh: '#D2D4D6',
+  alphaLight: '#D2D4D6',
+  alphaMedium: '#D2D4D6',
 }

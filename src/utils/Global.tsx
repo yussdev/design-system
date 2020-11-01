@@ -1,10 +1,9 @@
 import {createGlobalStyle, DefaultTheme} from 'styled-components'
 import {normalize} from 'polished'
+import {libPrefix} from '@utils/index'
 
 import fontSrc from '../assets/fonts/IRANSansMobile.ttf'
 import fontSrcBold from '../assets/fonts/IRANSansMobile_Bold.ttf'
-
-const libPrefix = 'sf'
 
 function generateCSSVariablesFromTheme(theme: DefaultTheme) {
   return Object.entries(theme)

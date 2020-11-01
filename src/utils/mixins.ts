@@ -24,3 +24,9 @@ export const fontStyles: MixinFn<FontStylesOptions> = ({
   font-weight: ${props => props.theme.weight[weight]};
   ${props => lh && `line-height: ${props.theme.lineHeight[lh]}`};
 `
+
+export const flexCenter = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
