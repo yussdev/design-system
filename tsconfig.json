@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": ".",
+    "paths": {
+      "@utils": ["./src/utils"],
+      "@components": ["./src/components"],
+      "@hooks": ["./src/hooks"]
+    },
+    "outDir": "dist",
+    "declaration": true,
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,10 +21,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "plugins": [{"transform": "typescript-transform-paths"}]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
