@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ComponentProps} from 'react'
 import styled, {css, DefaultTheme, useTheme} from 'styled-components'
 import {rem} from 'polished'
 import {Spinner} from '@components/Spinner'
@@ -169,10 +169,10 @@ const StyledButton = styled.button<ButtonProps>`
   ${flexCenter}
   cursor: pointer;
   transition: all 150ms ease-out 0s;
+  box-sizing: border-box;
   ${size}
   ${color}
   ${({size}) => fontStyles({scale: size!, weight: 'regular'})};
-  vertical-align: middle;
 
   span:not(:only-child) {
     &:first-child {
@@ -187,7 +187,7 @@ const StyledButton = styled.button<ButtonProps>`
 `
 
 export const Button: React.FC<
-  React.HTMLAttributes<HTMLButtonElement> & Partial<ButtonProps>
+  ComponentProps<typeof StyledButton> & ButtonProps & {theme?: DefaultTheme}
 > = props => {
   const theme = useTheme()
   const {Icon, isLoading, disabled, children, colorName, appearance} = props

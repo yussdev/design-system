@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
-import {libName, colorsName} from '@utils/index'
+import {libName, colorsName, disableStyledProps} from '@utils/index'
 import {ReactComponent as CircleCheck} from '@assets/icons/circle-check.svg'
 import {ReactComponent as CircleMinus} from '@assets/icons/circle-minus.svg'
 import {ReactComponent as CirclePlus} from '@assets/icons/circle-plus.svg'
@@ -8,12 +8,13 @@ import {ReactComponent as CirclePlus} from '@assets/icons/circle-plus.svg'
 const iconMap = {CircleCheck, CircleMinus, CirclePlus}
 
 import {Button, appearances} from './index'
+type PropsType = ComponentProps<typeof Button> & {icon: string}
 
 export default {
   title: `${libName}/Buttons`,
   component: Button,
   argTypes: {
-    theme: {table: {disable: true}},
+    ...disableStyledProps,
     Icon: {table: {disable: true}},
     icon: {
       control: {
@@ -30,7 +31,6 @@ export default {
   },
 } as Meta
 
-type PropsType = ComponentProps<typeof Button> & {icon: string}
 const Template: Story<PropsType> = args => (
   <Button {...args} Icon={iconMap[args.icon as keyof typeof iconMap]}>
     برچسب

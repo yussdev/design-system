@@ -1,5 +1,2 @@
-export * from './typography'
-export * from './colors'
-export * from './mixins'
-export * from './theme'
-export * from './contants'
+export * from './tokens'
+export * from './story'

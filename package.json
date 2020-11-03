@@ -43,6 +43,7 @@
   "dependencies": {
     "@types/styled-components": "^5.1.4",
     "polished": "^4.0.3",
+    "styled-breakpoints": "^8.1.2",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

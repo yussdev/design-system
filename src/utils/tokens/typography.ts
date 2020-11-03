@@ -1,3 +1,5 @@
+import {rem} from 'polished'
+
 export const fonts = {default: 'IRANSansMobile'}
 
 export const scales = {
@@ -24,4 +26,18 @@ export const weight = {
   black: 900,
   bold: 700,
   regular: 400,
+}
+
+export const spacing = {
+  0: rem(0),
+  1: rem(8),
+  2: rem(2 * 8),
+  3: rem(3 * 8),
+  4: rem(4 * 8),
+  5: rem(5 * 8),
+  6: rem(6 * 8),
+  7: rem(7 * 8),
+  8: rem(8 * 8),
+  9: rem(9 * 8),
+  10: rem(10 * 8),
 }

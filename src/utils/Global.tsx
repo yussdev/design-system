@@ -2,8 +2,8 @@ import {createGlobalStyle, DefaultTheme} from 'styled-components'
 import {normalize} from 'polished'
 import {libPrefix} from '@utils/index'
 
-import fontSrc from '../assets/fonts/IRANSansMobile.ttf'
-import fontSrcBold from '../assets/fonts/IRANSansMobile_Bold.ttf'
+import fontSrc from '@assets/fonts/IRANSansMobile.ttf'
+import fontSrcBold from '@assets/fonts/IRANSansMobile_Bold.ttf'
 
 function generateCSSVariablesFromTheme(theme: DefaultTheme) {
   return Object.entries(theme)
@@ -37,8 +37,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
 
+
     :root {
-      font-family: ${({theme}) => theme.fonts.default}
+      font-family: ${({theme}) => theme.fonts.default};
       ${({theme}) => generateCSSVariablesFromTheme(theme)}
     }
 

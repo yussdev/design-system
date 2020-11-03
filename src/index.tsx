@@ -1,1 +1,2 @@
-export const x = '45'
+export * from './components'
+export * from './utils'
