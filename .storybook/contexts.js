@@ -1,5 +1,5 @@
 import {ThemeProvider} from 'styled-components'
-import {defaultTheme} from '../src/utils/theme'
+import {defaultTheme, darkTheme} from '../src/utils/theme'
 
 export const contexts = [
   {
@@ -12,7 +12,7 @@ export const contexts = [
         props: {theme: defaultTheme},
         default: true,
       },
-      {name: 'Dark Theme', props: {theme: defaultTheme}},
+      {name: 'Dark Theme', props: {theme: darkTheme}},
     ],
     options: {
       deep: true,

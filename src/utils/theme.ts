@@ -11,6 +11,11 @@ export const defaultTheme = {
     radius: rem(6),
   },
 }
+export const darkTheme = {
+  ...defaultTheme,
+  ['accent']: defaultTheme['carbon'],
+  ['carbon']: defaultTheme['accent'],
+}
 export type ThemeType = typeof defaultTheme
 export type ColorsName = keyof typeof colors
 
