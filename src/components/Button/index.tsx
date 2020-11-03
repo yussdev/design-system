@@ -168,7 +168,7 @@ const color = ({
 const StyledButton = styled.button<ButtonProps>`
   ${flexCenter}
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 150ms ease-out 0s;
   ${size}
   ${color}
   ${({size}) => fontStyles({scale: size!, weight: 'regular'})};

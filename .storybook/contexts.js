@@ -3,7 +3,7 @@ import {defaultTheme, darkTheme} from '../src/utils/theme'
 
 export const contexts = [
   {
-    icon: 'box',
+    icon: 'paintbrush',
     title: 'Themes',
     components: [ThemeProvider],
     params: [
