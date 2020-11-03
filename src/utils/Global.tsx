@@ -18,7 +18,7 @@ function generateCSSVariablesFromTheme(theme: DefaultTheme) {
     .join(';')
 }
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     ${normalize()}
     
     @font-face {
@@ -44,4 +44,3 @@ const GlobalStyles = createGlobalStyle`
     }
 
 `
-export default GlobalStyles
