@@ -1,7 +1,15 @@
 const path = require('path')
 
 module.exports = {
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-contexts',
+    '@storybook/addon-essentials',
+    '@storybook/preset-create-react-app',
+  ],
   webpackFinal: async (config, {configType}) => {
+    // Config aliases
     config.resolve.alias = {
       ...config.resolve.alias,
       '@utils': path.resolve(__dirname, '../src/utils'),
@@ -11,11 +19,4 @@ module.exports = {
     }
     return config
   },
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-contexts',
-    '@storybook/addon-essentials',
-    '@storybook/preset-create-react-app',
-  ],
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import {addDecorator} from '@storybook/react'
 import {withContexts} from '@storybook/addon-contexts/react'
-import {contexts} from './contexts'
 import {GlobalStyles} from '../src/utils'
+import {contexts} from './contexts'
 
 export const parameters = {
   actions: {argTypesRegex: '^on[A-Z].*'},

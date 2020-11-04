@@ -15,4 +15,4 @@ const Template: Story<ComponentProps<typeof Paper>> = args => (
   <Paper {...args} />
 )
 
-export const PaperBasic = Template.bind({})
+export const Basic = Template.bind({})

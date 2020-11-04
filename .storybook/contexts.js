@@ -8,11 +8,11 @@ export const contexts = [
     components: [ThemeProvider],
     params: [
       {
-        name: 'Default Theme',
+        name: 'Light',
         props: {theme: defaultTheme},
         default: true,
       },
-      {name: 'Dark Theme', props: {theme: darkTheme}},
+      {name: 'Dark', props: {theme: darkTheme}, default: false},
     ],
     options: {
       deep: true,

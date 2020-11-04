@@ -1,5 +1,5 @@
-import React, {ComponentProps} from 'react'
 import styled, {css, DefaultTheme, useTheme} from 'styled-components'
+import React, {ComponentProps} from 'react'
 import {rem} from 'polished'
 import {Spinner} from '@components/Spinner'
 import {fontStyles, ColorsName, flexCenter} from '@utils/index'
@@ -133,6 +133,11 @@ const color = ({
       bd.pressed = bg.pressed
       break
   }
+  const getStateStyles = (state: keyof typeof fg) => css`
+    color: ${fg[state]};
+    background-color: ${bg[state]};
+    border-color: ${bd[state]};
+  `
   return css`
     color: ${!disabled ? fg.color : fg.inactive};
     background-color: ${isLoading
@@ -143,25 +148,17 @@ const color = ({
     border-color: ${!disabled ? bd.color : bd.inactive};
     background-clip: padding-box;
     &:hover {
-      color: ${fg.hover};
-      background-color: ${bg.hover};
-      border-color: ${bd.hover};
+      ${getStateStyles('hover')}
     }
     &:focus {
       outline: none;
-      color: ${fg.focused};
-      background-color: ${bg.focused};
-      border-color: ${bd.focused};
+      ${getStateStyles('focused')}
     }
     &:active {
-      color: ${fg.pressed};
-      background-color: ${bg.pressed};
-      border-color: ${bd.pressed};
+      ${getStateStyles('pressed')}
     }
     &:disabled {
-      color: ${fg.inactive};
-      background-color: ${bg.inactive};
-      border-color: ${bd.inactive};
+      ${getStateStyles('inactive')}
     }
   `
 }

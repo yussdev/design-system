@@ -1,14 +1,11 @@
 import React, {ComponentProps} from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
 import {libName, colorsName, disableStyledProps} from '@utils/index'
-import {ReactComponent as CircleCheck} from '@assets/icons/circle-check.svg'
-import {ReactComponent as CircleMinus} from '@assets/icons/circle-minus.svg'
-import {ReactComponent as CirclePlus} from '@assets/icons/circle-plus.svg'
-
-const iconMap = {CircleCheck, CircleMinus, CirclePlus}
-
+import {CircleCheck, CircleMinus, CirclePlus} from '@components/Icons'
 import {Button, appearances} from './index'
+
 type PropsType = ComponentProps<typeof Button> & {icon: string}
+const iconMap = {CircleCheck, CircleMinus, CirclePlus}
 
 export default {
   title: `${libName}/Buttons`,
