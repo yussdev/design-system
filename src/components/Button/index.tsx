@@ -190,7 +190,7 @@ const StyledButton = styled.button<ButtonProps>`
 
 export const Button = React.forwardRef<
   HTMLButtonElement,
-  StyledComponentProps<'button', DefaultTheme, ButtonProps, never>
+  Partial<StyledComponentProps<'button', DefaultTheme, ButtonProps, never>>
 >((props, ref) => {
   const theme = useTheme()
   const {Icon, isLoading, disabled, children, colorName, appearance} = props

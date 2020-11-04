@@ -90,3 +90,36 @@ export const WithBreakpoints: Story<PropsType> = ({...args}) => (
 WithBreakpoints.args = {
   ...BasicGrid.args,
 }
+
+function FormRow() {
+  return (
+    <React.Fragment>
+      <Grid item xs={4}>
+        <Paper>item</Paper>
+      </Grid>
+      <Grid item xs={4}>
+        <Paper>item</Paper>
+      </Grid>
+      <Grid item xs={4}>
+        <Paper>item</Paper>
+      </Grid>
+    </React.Fragment>
+  )
+}
+export const NestedGrid: Story<PropsType> = ({...args}) => (
+  <Grid {...args} container>
+    <Grid {...args} container item>
+      <FormRow />
+    </Grid>
+    <Grid {...args} container item>
+      <FormRow />
+    </Grid>
+    <Grid {...args} container item>
+      <FormRow />
+    </Grid>
+  </Grid>
+)
+
+NestedGrid.args = {
+  gap: 3,
+}
