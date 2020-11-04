@@ -3,7 +3,6 @@ import {Story, Meta} from '@storybook/react/types-6-0'
 import {breakpoints, disableStyledProps, libName, spacing} from '@utils/index'
 import {Paper} from '@components/Paper'
 import {Grid} from './index'
-import {Button} from '@components/Button'
 
 type PropsType = ComponentProps<typeof Grid>
 export default {

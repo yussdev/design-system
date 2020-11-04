@@ -1,7 +1,7 @@
 import React, {ComponentProps} from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
 import {libName, colorsName, disableStyledProps} from '@utils/index'
-import {CircleCheck, CircleMinus, CirclePlus} from '../../Icons/index'
+import {CircleCheck, CircleMinus, CirclePlus} from '@Icons/index'
 import {Button, appearances} from './index'
 
 type PropsType = ComponentProps<typeof Button> & {icon: string}

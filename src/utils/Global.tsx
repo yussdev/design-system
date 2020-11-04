@@ -2,9 +2,6 @@ import {createGlobalStyle, DefaultTheme} from 'styled-components'
 import {normalize} from 'polished'
 import {libPrefix} from '@utils/index'
 
-import fontSrc from '../assets/fonts/IRANSansMobile.ttf'
-import fontSrcBold from '../assets/fonts/IRANSansMobile_Bold.ttf'
-
 function generateCSSVariablesFromTheme(theme: DefaultTheme) {
   return Object.entries(theme)
     .map(([outerKey, value]) =>
@@ -20,20 +17,19 @@ function generateCSSVariablesFromTheme(theme: DefaultTheme) {
 
 export const GlobalStyles = createGlobalStyle`
     ${normalize()}
-    
     @font-face {
       font-family: 'IRANSansMobile';
       font-style: normal;
       font-weight: normal;
       font-display: fallback;
-      src: url(${fontSrc});
+      src: url('https://snappfood.ir/pwa/assets/fonts/IRANSansMobile.ttf');
     }
     @font-face {
       font-family: 'IRANSansMobile';
       font-style: normal;
       font-weight: normal;
       font-display: fallback;
-      src: url(${fontSrcBold});
+      src: url('https://snappfood.ir/pwa/assets/fonts/IRANSansMobile_Bold.ttf');
     }
 
 
