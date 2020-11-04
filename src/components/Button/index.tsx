@@ -1,5 +1,10 @@
-import styled, {css, DefaultTheme, useTheme} from 'styled-components'
-import React, {ComponentProps} from 'react'
+import styled, {
+  css,
+  DefaultTheme,
+  StyledComponentProps,
+  useTheme,
+} from 'styled-components'
+import React from 'react'
 import {rem} from 'polished'
 import {Spinner} from '@components/Spinner'
 import {fontStyles, ColorsName, flexCenter} from '@utils/index'
@@ -183,9 +188,10 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `
 
-export const Button: React.FC<
-  ComponentProps<typeof StyledButton> & ButtonProps & {theme?: DefaultTheme}
-> = props => {
+export const Button = React.forwardRef<
+  HTMLButtonElement,
+  StyledComponentProps<'button', DefaultTheme, ButtonProps, never>
+>((props, ref) => {
   const theme = useTheme()
   const {Icon, isLoading, disabled, children, colorName, appearance} = props
 
@@ -203,7 +209,7 @@ export const Button: React.FC<
   }
   return (
     <React.Fragment>
-      <StyledButton {...props}>
+      <StyledButton {...props} ref={ref}>
         {Icon && <Icon />}
         {isLoading && !disabled ? (
           <Spinner size='13px' color={getLoadingColor()!} />
@@ -213,8 +219,8 @@ export const Button: React.FC<
       </StyledButton>
     </React.Fragment>
   )
-}
-
+})
+Button.displayName = 'Button'
 Button.defaultProps = {
   appearance: 'solid',
   isLoading: false,
