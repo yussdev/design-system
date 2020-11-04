@@ -29,7 +29,7 @@ export interface GridProps {
   alignItems?: AlignItems
   direction?: Direction
   theme: DefaultTheme
-  spacing?: SpacingType
+  gap?: SpacingType
   xs?: GridValues
   sm?: GridValues
   md?: GridValues
@@ -38,7 +38,7 @@ export interface GridProps {
 }
 const layout = ({
   container,
-  spacing,
+  gap,
   justify,
   alignContent,
   alignItems,
@@ -47,8 +47,8 @@ const layout = ({
 }: GridProps) =>
   container &&
   css`
-    width: calc(100% + ${theme.spacing[spacing || 0]});
-    margin: calc(-${theme.spacing[spacing || 0]} / 2);
+    width: calc(100% + ${theme.spacing[gap || 0]});
+    margin: calc(-${theme.spacing[gap || 0]} / 2);
     display: ${container ? 'flex' : 'unset'};
     justify-content: ${justify};
     align-content: ${alignContent};
@@ -56,7 +56,7 @@ const layout = ({
     flex-wrap: wrap;
     flex-direction: ${direction};
     > * {
-      padding: calc(${theme.spacing[spacing || 0]} / 2);
+      padding: calc(${theme.spacing[gap || 0]} / 2);
     }
   `
 const size = ({xs, sm, md, lg, xl, item}: GridProps) => {
