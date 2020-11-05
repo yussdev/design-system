@@ -1,6 +1,7 @@
 import {createGlobalStyle, DefaultTheme} from 'styled-components'
 import {normalize} from 'polished'
-import {libPrefix} from '@utils/tokens/contants'
+
+const libPrefix = 'sf'
 
 function generateCSSVariablesFromTheme(theme: DefaultTheme) {
   return Object.entries(theme)

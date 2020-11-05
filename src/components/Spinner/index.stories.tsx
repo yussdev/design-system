@@ -1,7 +1,7 @@
 import React from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
 import {useTheme} from 'styled-components'
-import {libName} from '@utils/index'
+import {CSSGridContainer, libName} from '@utils/story'
 import {Spinner, SpinnerProps} from './index'
 
 export default {
@@ -21,18 +21,11 @@ Template.args = {
 export const Spinners: Story<SpinnerProps> = args => {
   const theme = useTheme()
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(1,108px)',
-        gap: '5px',
-        height: '150px',
-      }}
-    >
+    <CSSGridContainer gap='5px' columns='repeat(1,108px)' height='150px'>
       <Template {...args} />
       <Template {...args} color={theme.accent2.main} />
       <Template {...args} color={theme.carbon.main} />
       <Template {...args} color={theme.alert.main} />
-    </div>
+    </CSSGridContainer>
   )
 }

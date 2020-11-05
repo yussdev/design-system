@@ -1,26 +1,17 @@
 import React, {ComponentProps} from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
-import {breakpoints, disableStyledProps, libName, spacing} from '@utils/index'
+import {breakpointsArgsType, disableStyledProps, libName} from '@utils/story'
+import {spacing} from '@utils/index'
 import {Paper} from '@components/Paper'
 import {Grid} from './index'
 
 type PropsType = ComponentProps<typeof Grid>
 export default {
-  title: `${libName}/Grid System`,
+  title: `${libName}/Grid`,
   component: Grid,
   argTypes: {
     ...disableStyledProps,
-    ...Object.keys(breakpoints).reduce((acc, val) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore;
-      acc[val] = {
-        control: {
-          type: 'select',
-          options: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, true],
-        },
-      }
-      return acc
-    }, {}),
+    ...breakpointsArgsType,
     spacing: {
       control: {
         type: 'select',

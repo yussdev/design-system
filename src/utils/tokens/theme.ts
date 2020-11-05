@@ -13,12 +13,16 @@ export const defaultTheme = {
     focused: rem(3),
     radius: rem(6),
   },
+  shadows: {
+    normal: 'inset 0px 1px 6px rgba(0, 0, 0, 0.04)',
+  },
 }
 export const darkTheme = {
   ...defaultTheme,
   ['accent']: defaultTheme['carbon'],
   ['carbon']: defaultTheme['accent'],
 }
+
 export type ThemeType = typeof defaultTheme
 export type ColorsName = keyof typeof colors
 export type ScalesType = keyof typeof typography['scales']

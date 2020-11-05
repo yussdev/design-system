@@ -1,6 +1,11 @@
 import React, {ComponentProps} from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
-import {libName, colorsName, disableStyledProps} from '@utils/index'
+import {
+  CSSGridContainer,
+  colorsName,
+  disableStyledProps,
+  libName,
+} from '@utils/story'
 import {CircleCheck, CircleMinus, CirclePlus} from '@Icons/index'
 import {Button, appearances} from './index'
 
@@ -19,12 +24,6 @@ export default {
         options: Object.keys(iconMap),
       },
     },
-    dir: {
-      control: {
-        type: 'select',
-        options: ['rtl', 'ltr'],
-      },
-    },
   },
 } as Meta
 
@@ -35,13 +34,7 @@ const Template: Story<PropsType> = args => (
 )
 
 export const All: Story<PropsType> = args => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4,108px)',
-      gap: '10px',
-    }}
-  >
+  <CSSGridContainer gap='10px' columns='repeat(4,108px)'>
     {appearances.map(appearance =>
       colorsName
         .filter(key => key !== 'inactive' && key !== 'surface')
@@ -57,7 +50,7 @@ export const All: Story<PropsType> = args => (
           </React.Fragment>
         ))
     )}
-  </div>
+  </CSSGridContainer>
 )
 All.argTypes = {
   icon: {table: {disable: true}},
@@ -83,13 +76,7 @@ Naked.args = {
 }
 
 export const WithIcons: Story<PropsType> = args => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4,108px)',
-      gap: '10px',
-    }}
-  >
+  <CSSGridContainer gap='10px' columns='repeat(4,108px)'>
     {appearances.map(appearance =>
       colorsName
         .filter(key => key !== 'inactive' && key !== 'surface')
@@ -104,7 +91,7 @@ export const WithIcons: Story<PropsType> = args => (
           </React.Fragment>
         ))
     )}
-  </div>
+  </CSSGridContainer>
 )
 WithIcons.args = {
   icon: 'CircleCheck',
