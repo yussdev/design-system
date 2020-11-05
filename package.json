@@ -1,6 +1,10 @@
 {
-  "name": "design-system",
-  "version": "0.1.6",
+  "name": "@yussdev/design-system",
+  "version": "0.1.7",
+  "description": "Snappfood Design System",
+  "repository": "https://github.com/yussdev/design-system",
+  "author": "Youssef <Yousef.Alijani@ZoodFood.com>",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -8,14 +12,15 @@
     "README.md"
   ],
   "sideEffects": false,
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "start-storybook -p 6006 --no-dll",
     "prebuild": "rimraf dist",
     "build": "ttsc",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --ignore-path .gitignore",
     "format": "prettier 'src/**/*.{js,jsx,ts,tsx,css,scss,md,mdx}' --write  --ignore-path .gitignore",
-    "build-storybook": "build-storybook --no-dll"
+    "build-storybook": "build-storybook --no-dll",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -95,5 +100,8 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*.{js,jsx,ts,tsx,css,scss,md,mdx}": "prettier --write"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/yussdev"
   }
 }
