@@ -1,26 +1,31 @@
 import styled, {
   css,
+  useTheme,
   DefaultTheme,
   StyledComponentProps,
-  useTheme,
 } from 'styled-components'
 import React from 'react'
 import {rem} from 'polished'
 import {Spinner} from '@components/Spinner'
-import {fontStyles, ColorsName, flexCenter} from '@utils/index'
+import {fontStyles, ColorsName, flexCenter, defaultTheme} from '@utils/index'
 
 export interface ButtonProps {
   appearance?: 'solid' | 'outline' | 'ghost' | 'naked'
   colorName?: ColorsName
   size?: 'default' | 'large'
-  theme: DefaultTheme
+  theme?: DefaultTheme
   disabled?: boolean
   isLoading?: boolean
   block?: boolean
   Icon?: React.FC
 }
 
-const size = ({size, block, colorName, theme}: ButtonProps) => css`
+const size = ({
+  size,
+  block,
+  colorName = 'accent',
+  theme = defaultTheme,
+}: ButtonProps) => css`
   min-width: 107px;
   width: ${block ? '100%' : ''};
   height: ${size === 'large' ? rem(48) : rem(40)};
@@ -29,18 +34,18 @@ const size = ({size, block, colorName, theme}: ButtonProps) => css`
     ? `${rem(10)} ${rem(16)}`
     : `${rem(8)}  ${rem(16)}`};
 
-  border: ${theme.borders.default} solid ${theme[colorName!].main};
+  border: ${theme.borders.default} solid ${theme[colorName].main};
   border-radius: ${theme.borders.radius};
 `
 
 const color = ({
-  colorName,
-  theme,
+  colorName = 'accent',
+  theme = defaultTheme,
   disabled,
   isLoading,
   appearance,
 }: ButtonProps) => {
-  const mainColor = theme[colorName!].main
+  const mainColor = theme[colorName].main
   const fg = {
     color: '',
     hover: '',
@@ -69,7 +74,7 @@ const color = ({
   switch (appearance) {
     case 'outline':
       fg.color = mainColor
-      fg.hover = theme[colorName!].dark
+      fg.hover = theme[colorName].dark
       fg.focused = mainColor
       fg.pressed = fg.hover
 
@@ -77,51 +82,51 @@ const color = ({
       bg.focused = bg.color
       bg.loading = bg.color
       bg.hover = bg.color
-      bg.pressed = theme[colorName!].alphaMedium
+      bg.pressed = theme[colorName].alphaMedium
 
       bd.color = fg.color
       bd.hover = fg.hover
-      bd.focused = theme[colorName!].alphaHigh
+      bd.focused = theme[colorName].alphaHigh
       bd.pressed = fg.pressed
 
       break
     case 'ghost':
       fg.color = mainColor
-      fg.hover = theme[colorName!].dark
+      fg.hover = theme[colorName].dark
       fg.focused = mainColor
       fg.pressed = fg.hover
 
-      bg.color = theme[colorName!].alphaLight
+      bg.color = theme[colorName].alphaLight
       bg.focused = bg.color
       bg.loading = bg.color
-      bg.hover = theme[colorName!].alphaMedium
-      bg.pressed = theme[colorName!].alphaHigh
+      bg.hover = theme[colorName].alphaMedium
+      bg.pressed = theme[colorName].alphaHigh
 
       bd.color = bg.color
       bd.hover = bg.hover
-      bd.focused = theme[colorName!].alphaHigh
+      bd.focused = theme[colorName].alphaHigh
       bd.pressed = bg.pressed
 
       break
     case 'naked':
       fg.color = mainColor
-      fg.hover = theme[colorName!].dark
+      fg.hover = theme[colorName].dark
       fg.focused = mainColor
       fg.pressed = fg.hover
 
       bg.color = 'transparent'
       bg.focused = bg.color
       bg.loading = bg.color
-      bg.hover = theme[colorName!].alphaLight
-      bg.pressed = theme[colorName!].alphaMedium
+      bg.hover = theme[colorName].alphaLight
+      bg.pressed = theme[colorName].alphaMedium
 
       bd.color = bg.color
       bd.hover = bg.hover
-      bd.focused = theme[colorName!].alphaHigh
+      bd.focused = theme[colorName].alphaHigh
       bd.pressed = bg.pressed
       break
     case 'solid':
-      fg.color = theme[colorName!].overlay
+      fg.color = theme[colorName].overlay
       fg.hover = fg.color
       fg.focused = fg.color
       fg.pressed = fg.color
@@ -129,12 +134,12 @@ const color = ({
       bg.color = mainColor
       bg.focused = bg.color
       bg.loading = bg.color
-      bg.hover = theme[colorName!].light
-      bg.pressed = theme[colorName!].dark
+      bg.hover = theme[colorName].light
+      bg.pressed = theme[colorName].dark
 
       bd.color = bg.color
       bd.hover = bg.hover
-      bd.focused = theme[colorName!].alphaHigh
+      bd.focused = theme[colorName].alphaHigh
       bd.pressed = bg.pressed
       break
   }
@@ -190,21 +195,28 @@ const StyledButton = styled.button<ButtonProps>`
 
 export const Button = React.forwardRef<
   HTMLButtonElement,
-  Partial<StyledComponentProps<'button', DefaultTheme, ButtonProps, never>>
+  StyledComponentProps<'button', DefaultTheme, ButtonProps, never>
 >((props, ref) => {
-  const theme = useTheme()
-  const {Icon, isLoading, disabled, children, colorName, appearance} = props
+  const {
+    Icon,
+    isLoading,
+    disabled,
+    children,
+    colorName = 'accent',
+    appearance,
+  } = props
+  const theme = props.theme || useTheme() || defaultTheme
 
   const getLoadingColor = () => {
     switch (appearance) {
       case 'ghost':
-        return theme[colorName!].main
+        return theme[colorName].main
       case 'naked':
-        return theme[colorName!].main
+        return theme[colorName].main
       case 'outline':
-        return theme[colorName!].main
+        return theme[colorName].main
       case 'solid':
-        return theme[colorName!].overlay
+        return theme[colorName].overlay
     }
   }
   return (
@@ -220,13 +232,13 @@ export const Button = React.forwardRef<
     </React.Fragment>
   )
 })
-Button.displayName = 'Button'
 Button.defaultProps = {
   appearance: 'solid',
   isLoading: false,
   size: 'default',
   colorName: 'accent',
 }
+Button.displayName = 'Button'
 
 export const appearances: Array<ButtonProps['appearance']> = [
   'solid',

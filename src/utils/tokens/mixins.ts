@@ -1,5 +1,5 @@
 import {css} from 'styled-components'
-import {ThemeType} from './theme'
+import {defaultTheme, ThemeType} from './theme'
 
 /**
  * Mixins function base type
@@ -19,10 +19,10 @@ export const fontStyles: MixinFn<FontStylesOptions> = ({
   weight = 'regular',
   lh,
 }) => css`
-  font-family: ${props => props.theme.fonts.default};
-  font-size: ${props => props.theme.scales[scale]};
-  font-weight: ${props => props.theme.weight[weight]};
-  ${props => lh && `line-height: ${props.theme.lineHeight[lh]}`};
+  font-family: ${({theme = defaultTheme}) => theme.fonts.default};
+  font-size: ${({theme = defaultTheme}) => theme.scales[scale]};
+  font-weight: ${({theme = defaultTheme}) => theme.weight[weight]};
+  ${({theme = defaultTheme}) => lh && `line-height: ${theme.lineHeight[lh]}`};
 `
 
 export const flexCenter = css`

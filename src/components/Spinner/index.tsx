@@ -1,6 +1,6 @@
 import React from 'react'
-import styled, {keyframes} from 'styled-components'
-import {flexCenter} from '@utils/index'
+import styled, {DefaultTheme, keyframes} from 'styled-components'
+import {defaultTheme, flexCenter} from '@utils/index'
 
 export interface SpinnerProps {
   size: string
@@ -62,9 +62,11 @@ const StyledSpinner = styled.div`
 const SpinnerDot = styled.div<SpinnerProps>`
   width: ${({size}) => size};
   height: ${({size}) => size};
-  background-color: ${({color, theme}) => color || theme.accent.main};
+  background-color: ${({color}) => color};
 `
-export const Spinner: React.FC<SpinnerProps> = props => {
+export const Spinner: React.FC<SpinnerProps & {theme?: DefaultTheme}> = ({
+  ...props
+}) => {
   return (
     <StyledSpinner>
       <SpinnerDot {...props} />
@@ -76,4 +78,5 @@ export const Spinner: React.FC<SpinnerProps> = props => {
 }
 Spinner.defaultProps = {
   size: '13px',
+  color: defaultTheme.accent.main,
 }

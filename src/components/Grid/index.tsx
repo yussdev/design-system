@@ -1,6 +1,6 @@
 import styled, {css, DefaultTheme} from 'styled-components'
 import {up} from 'styled-breakpoints'
-import {SpacingType} from '@utils/index'
+import {SpacingType, defaultTheme} from '@utils/index'
 
 type AlignContent =
   | 'stretch'
@@ -29,7 +29,6 @@ export interface GridProps {
   alignContent?: AlignContent
   alignItems?: AlignItems
   direction?: Direction
-  theme: DefaultTheme
   gap?: SpacingType
   xs?: GridValues
   sm?: GridValues
@@ -38,6 +37,7 @@ export interface GridProps {
   xl?: GridValues
   zeroMinWidth?: boolean
   flexWrap?: Wrap
+  theme?: DefaultTheme
 }
 const layout = ({
   container,
@@ -48,7 +48,7 @@ const layout = ({
   alignContent,
   alignItems,
   direction,
-  theme,
+  theme = defaultTheme,
 }: GridProps) =>
   container &&
   css`
