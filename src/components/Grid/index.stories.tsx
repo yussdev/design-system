@@ -21,7 +21,7 @@ export default {
       }
       return acc
     }, {}),
-    gap: {
+    spacing: {
       control: {
         type: 'select',
         options: Object.keys(spacing),
@@ -58,7 +58,7 @@ export const BasicGrid: Story<PropsType> = ({...args}) => (
 
 BasicGrid.args = {
   container: true,
-  gap: 3,
+  spacing: 3,
 }
 
 export const WithBreakpoints: Story<PropsType> = ({...args}) => (
@@ -120,5 +120,5 @@ export const NestedGrid: Story<PropsType> = ({...args}) => (
 )
 
 NestedGrid.args = {
-  gap: 3,
+  spacing: 3,
 }

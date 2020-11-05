@@ -29,21 +29,21 @@ export interface GridProps {
   alignContent?: AlignContent
   alignItems?: AlignItems
   direction?: Direction
-  gap?: SpacingType
+  spacing?: SpacingType
   xs?: GridValues
   sm?: GridValues
   md?: GridValues
   lg?: GridValues
   xl?: GridValues
   zeroMinWidth?: boolean
-  flexWrap?: Wrap
+  wrap?: Wrap
   theme?: DefaultTheme
 }
 const layout = ({
   container,
   item,
-  flexWrap,
-  gap,
+  wrap,
+  spacing,
   justify,
   alignContent,
   alignItems,
@@ -52,16 +52,16 @@ const layout = ({
 }: GridProps) =>
   container &&
   css`
-    width: calc(100% + ${theme.spacing[gap || 0]});
-    margin: ${!item && `calc(-${theme.spacing[gap || 0]} / 2);`};
+    width: calc(100% + ${theme.spacing[spacing || 0]});
+    margin: ${!item && `calc(-${theme.spacing[spacing || 0]} / 2);`};
     display: ${container ? 'flex' : 'unset'};
     justify-content: ${justify};
     align-content: ${alignContent};
     align-items: ${alignItems};
-    flex-wrap: ${flexWrap};
+    flex-wrap: ${wrap};
     flex-direction: ${direction};
     > * {
-      padding: calc(${theme.spacing[gap || 0]} / 2);
+      padding: calc(${theme.spacing[spacing || 0]} / 2);
     }
   `
 const size = ({xs, sm, md, lg, xl, item, zeroMinWidth}: GridProps) => {
@@ -112,11 +112,15 @@ const size = ({xs, sm, md, lg, xl, item, zeroMinWidth}: GridProps) => {
   )
 }
 
-export const Grid = styled.div<GridProps>`
+export const Grid = styled.div.withConfig<GridProps>({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !['direction', 'spacing', 'wrap'].includes(prop) &&
+    defaultValidatorFn(prop),
+})`
   box-sizing: border-box;
   ${layout}
   ${size}
 `
 Grid.defaultProps = {
-  flexWrap: 'wrap',
+  wrap: 'wrap',
 }

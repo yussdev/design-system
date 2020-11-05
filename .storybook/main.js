@@ -8,6 +8,12 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
   ],
+  babel: async options =>
+    console.log(options) || {
+      ...options,
+      plugins: [...options.plugins, 'styled-components'],
+      // any extra options you want to set
+    },
   webpackFinal: async (config, {configType}) => {
     // Config aliases
     config.resolve.alias = {
