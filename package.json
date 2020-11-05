@@ -102,6 +102,6 @@
     "*.{js,jsx,ts,tsx,css,scss,md,mdx}": "prettier --write"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/yussdev"
+    "registry": "https://npm.pkg.github.com/"
   }
 }
