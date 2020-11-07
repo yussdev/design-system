@@ -13,23 +13,22 @@ const SwitchInput = styled.input.attrs<SwitchProps>({type: 'checkbox'})<
   SwitchProps
 >`
   display: none;
-  // add default box-sizing for this scope
   &,
   &:after,
   &:before,
   & *,
   & *:after,
   & *:before,
-  & + label {
+  & + span {
     box-sizing: border-box;
     &::selection {
       background: none;
     }
   }
 
-  + label {
+  + span {
     outline: 0;
-    display: block;
+    display: inline-block;
     width: ${rem(40)};
     height: ${rem(24)};
     position: relative;
@@ -63,10 +62,10 @@ const SwitchInput = styled.input.attrs<SwitchProps>({type: 'checkbox'})<
   }
 
   &:checked {
-    + label:after {
+    + span:after {
       left: ${({dir}) => (dir === 'ltr' ? '45%' : '0')};
     }
-    + label {
+    + span {
       background: ${({theme, colorName = 'accent2'}) => theme[colorName].main};
     }
   }
@@ -80,7 +79,7 @@ export const Switch: React.FC<StyledComponentProps<
 >> = ({checked, onChange = noop, id, ...props}) => {
   const [isChecked, setIsChecked] = React.useState<boolean>(Boolean(checked))
   return (
-    <React.Fragment>
+    <label>
       <SwitchInput
         {...props}
         id={id}
@@ -90,12 +89,11 @@ export const Switch: React.FC<StyledComponentProps<
           onChange(e)
         }}
       />
-      <label htmlFor={id} />
-    </React.Fragment>
+      <span />
+    </label>
   )
 }
 
 Switch.defaultProps = {
-  checked: true,
   colorName: 'accent2',
 }

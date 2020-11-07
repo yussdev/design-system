@@ -6,13 +6,13 @@ import {
   disableStyledProps,
   colorsName,
 } from '@utils/story'
-import {Switch} from './index'
+import {Checkbox} from './index'
 
-type PropsType = ComponentProps<typeof Switch>
+type PropsType = ComponentProps<typeof Checkbox>
 
 export default {
-  title: `${libName}/Switch`,
-  component: Switch,
+  title: `${libName}/Checkbox`,
+  component: Checkbox,
   argTypes: {
     ...disableStyledProps,
     checked: {
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<PropsType> = args => <Switch {...args} />
+const Template: Story<PropsType> = args => <Checkbox {...args} />
 Template.args = {
   checked: true,
 }
@@ -32,14 +32,14 @@ export const All: Story<PropsType> = ({id, ...args}) => (
       .filter(key => key !== 'inactive' && key !== 'surface')
       .map((colorName, index) =>
         index === 0 ? (
-          <Switch
+          <Checkbox
             colorName={colorName}
             id={String(index + id)}
             key={index}
             {...args}
           />
         ) : (
-          <Switch
+          <Checkbox
             {...args}
             colorName={colorName}
             id={String(index + id)}

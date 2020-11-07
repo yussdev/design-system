@@ -6,11 +6,11 @@ import {
   disableStyledProps,
   libName,
 } from '@utils/story'
-import {CircleCheck, CircleMinus, CirclePlus} from '@Icons/index'
+import {CircleCheckIcon, CircleMinusIcon, CirclePlusIcon} from '@Icons/index'
 import {Button, appearances} from './index'
 
 type PropsType = ComponentProps<typeof Button> & {icon: string}
-const iconMap = {CircleCheck, CircleMinus, CirclePlus}
+const iconMap = {CircleCheckIcon, CircleMinusIcon, CirclePlusIcon}
 
 export default {
   title: `${libName}/Buttons`,
@@ -94,5 +94,5 @@ export const WithIcons: Story<PropsType> = args => (
   </CSSGridContainer>
 )
 WithIcons.args = {
-  icon: 'CircleCheck',
+  icon: 'CircleCheckIcon',
 }
